@@ -98,6 +98,7 @@ ul {
     box-shadow: 0 5px 15px rgba(0, 188, 212, 0.6);
 }
 
+
 .secondary-btn {
     background: transparent;
     color: var(--primary-color);
@@ -166,13 +167,51 @@ ul {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--dark-card-bg);
+    position: absolute;
+    top: 80px; /* Adjust based on header height */
+    left: 0;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+
+  .navbar .nav-links.active {
+    display: flex;
+  }
+
+  .navbar .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
 .menu-toggle {
     display: none;
     font-size: 1.8rem;
     color: var(--text-color);
     cursor: pointer;
+    .navbar .nav-links {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
 }
 
+.navbar .nav-links.active {
+  max-height: 500px; /* enough to show all items */
+  opacity: 1;
+}
+
+}
 /* Hero Section */
 .hero {
     display: flex;
